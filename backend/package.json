@@ -1,0 +1,15 @@
+    {
+  "name": "filafacil-backend",
+  "version": "1.0.0",
+  "description": "API REST simples para gestão de filas em postos de saúde",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.0",
+    "nanoid": "^5.0.7"
+  }
+}
