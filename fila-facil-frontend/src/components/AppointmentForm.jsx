@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function AppointmentForm({ onCreate, loading }) {
   const [form, setForm] = useState({
     name: "",
-    serviceType: "Consulta",
+    serviceType: "Combo clássico",
     priority: "normal"
   });
 
@@ -22,32 +22,38 @@ export default function AppointmentForm({ onCreate, loading }) {
 
   return (
     <form className="card" onSubmit={handleSubmit}>
-      <h2 className="card-title">Registrar paciente</h2>
+      <div className="card-header">
+        <div>
+          <p className="eyebrow">Nova comanda</p>
+          <h2 className="card-title">Abrir pedido Noc-Food</h2>
+        </div>
+        <p className="muted">Cadastre clientes e mantenha a cozinha no ritmo.</p>
+      </div>
 
       <label className="field">
-        <span>Nome do paciente</span>
+        <span>Nome do cliente</span>
         <input
           type="text"
           name="name"
           value={form.name}
           onChange={handleChange}
-          placeholder="Ex: Maria da Silva"
+          placeholder="Ex: Camila - Combo Big Noc"
           required
         />
       </label>
 
       <label className="field">
-        <span>Tipo de atendimento</span>
+        <span>Tipo de pedido</span>
         <select
           name="serviceType"
           value={form.serviceType}
           onChange={handleChange}
         >
-          <option>Consulta</option>
-          <option>Exame</option>
-          <option>Farmácia</option>
-          <option>Curativo</option>
-          <option>Emergência</option>
+          <option>Combo clássico</option>
+          <option>Sobremesa gelada</option>
+          <option>Linha signature</option>
+          <option>Acompanhamentos</option>
+          <option>Entrega prioritária</option>
         </select>
       </label>
 
@@ -62,7 +68,7 @@ export default function AppointmentForm({ onCreate, loading }) {
               checked={form.priority === "normal"}
               onChange={handleChange}
             />
-            Normal
+            Padrão
           </label>
           <label>
             <input
@@ -72,13 +78,13 @@ export default function AppointmentForm({ onCreate, loading }) {
               checked={form.priority === "preferencial"}
               onChange={handleChange}
             />
-            Preferencial (idosos, gestantes...)
+            Preferencial (prioridade máxima)
           </label>
         </div>
       </label>
 
-      <button type="submit" disabled={loading}>
-        {loading ? "Registrando..." : "Adicionar à fila"}
+      <button type="submit" className="cta" disabled={loading}>
+        {loading ? "Enviando..." : "Disparar pedido"}
       </button>
     </form>
   );
